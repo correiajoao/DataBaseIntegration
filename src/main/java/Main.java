@@ -1,6 +1,6 @@
+import baseX.BaseXManager;
+import nitrite.NitriteManager;
 import org.basex.core.BaseXException;
-import org.basex.core.Context;
-import org.basex.core.cmd.*;
 
 import java.util.Scanner;
 
@@ -36,6 +36,7 @@ public class Main {
                     break;
                 }
                 case 2: {
+                    NitriteManager.getInstance().loadData();
                     break;
                 }
                 case 3: {
@@ -71,6 +72,8 @@ public class Main {
 
                             System.out.println(QueryManager.getInstance().queryOrder(input));
 
+                            break;
+                        }case 3:{
                             break;
                         }
                     }

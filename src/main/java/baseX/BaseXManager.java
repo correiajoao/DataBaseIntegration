@@ -1,3 +1,5 @@
+package baseX;
+
 import org.basex.core.BaseXException;
 import org.basex.core.Context;
 import org.basex.core.cmd.CreateDB;
@@ -11,7 +13,7 @@ public class BaseXManager {
 
     private BaseXManager() {
         //Carregar base automaticamente
-        //this.loadData("CustomersAndOrders.xml");
+        this.loadData("CustomersAndOrders.xml");
     }
 
     public static BaseXManager getInstance() {
@@ -39,9 +41,9 @@ public class BaseXManager {
             String query = null;
 
             if(function.equals("contains")){
-                query = "(for $i in //Root/Orders/Order where contains($i/"+tag+", '"+value+"') return <Result>{$i}</Result>)";
+                query = "(for $i in //Root/Orders/Order where contains($i/"+tag+", '"+value+"') return( $i ) )";
             }else if(function.equals("equals")){
-                query = "(for $i in //Root/Orders/Order where $i/"+tag+" = '" + value + "' return <Result>{$i}</Result>)";
+                query = "(for $i in //Root/Orders/Order where $i/"+tag+" = '" + value + "' return( $i ))";
             }
 
             System.out.println(query);
@@ -57,9 +59,9 @@ public class BaseXManager {
             String query = null;
 
             if(function.equals("contains")){
-                 query = "(for $i in //Root/Customers/Customer where contains($i/"+tag+", '"+value+"') return <Result>{$i}</Result>)";
+                 query = "(for $i in //Root/Customers/Customer where contains($i/"+tag+", '"+value+"') return( $i ))";
             }else if(function.equals("equals")){
-                 query = "(for $i in //Root/Customers/Customer where $i/"+tag+" = '" + value + "' return <Result>{$i}</Result>)";
+                 query = "(for $i in //Root/Customers/Customer where $i/"+tag+" = '" + value + "' return( $i ))";
             }
 
             System.out.println(query);
